@@ -17,7 +17,7 @@ class DBengine:
     A wrapper class for postgresql engine.
     Maintains connections and executes queries.
     """
-    def __init__(self, user, pwd, db, host='localhost', port=5432, pool_size=20, timeout=60000):
+    def __init__(self, user, pwd, db, host='postgres', port=5432, pool_size=20, timeout=60000):
         self.timeout = timeout
         self._pool = Pool(pool_size) if pool_size > 1 else None
         url = 'postgresql+psycopg2://{}:{}@{}:{}/{}?client_encoding=utf8'

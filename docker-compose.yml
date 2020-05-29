@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:11-alpine
+    environment:
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - pg-data:/var/lib/postgresql/data
+  holoclean:
+    image: python:3.7-buster
+    volumes:
+      - .:/usr/local/src
+      - pg-data:/pg-data
+    depends_on:
+      - postgres
+    command: ["tail", "-f", "/dev/null"]
+    working_dir: /usr/local/src
+volumes:
+  pg-data:

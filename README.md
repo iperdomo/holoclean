@@ -19,9 +19,30 @@ predictions, and insights form noisy, incomplete, and erroneous data.
 
 ## Installation
 
-HoloClean was tested on Python versions 2.7, 3.6, and 3.7. 
+HoloClean was tested on Python versions 2.7, 3.6, and 3.7.
 It requires PostgreSQL version 9.4 or higher.
 
+### 0. Dockerized environment
+
+* Requirements `docker` and `docker-compose`
+
+```bash
+$ docker-compose up -d
+$ docker-compose exec holoclean bash
+```
+
+Inside de `holoclean` container
+
+```bash
+# pip3 install -r requirements
+```
+
+Run te tests
+
+```bash
+# cd examples
+# ./start_example.sh
+```
 
 ### 1. Install and configure PostgreSQL
 
@@ -89,7 +110,7 @@ You can then use `docker start pghc` and `docker stop pghc` to start/stop the co
 
 
 Note the port number which may conflict with existing PostgreSQL servers.
-Read more about this docker image [here](https://hub.docker.com/_/postgres/). 
+Read more about this docker image [here](https://hub.docker.com/_/postgres/).
 
 ### 2. Setting up HoloClean
 HoloClean runs on Python 2.7 or 3.6+. We recommend running it from within
@@ -99,7 +120,7 @@ a virtual environment.
 ##### Option 1: Conda Virtual Environment
 
 First, download Anaconda (not miniconda) from [this link](https://www.anaconda.com/download).
-Follow the steps for your OS and framework. 
+Follow the steps for your OS and framework.
 
 Second, create a conda environment (python 2.7 or 3.6+).
 For example, to create a *Python 3.6* conda environment, run:
@@ -116,7 +137,7 @@ $ conda activate hc36
 
 ##### Option 2: Set up a virtual environment using pip and Virtualenv
 
-If you are familiar with `virtualenv`, you can use it to create 
+If you are familiar with `virtualenv`, you can use it to create
 a virtual environment.
 
 For Python 3.6, create a new environment
@@ -147,8 +168,8 @@ $ source hc36/bin/activate
 #### Install the required python packages
 
 *Note: make sure that the environment is activated throughout the installation process.
-When you are done, deactivate it using* 
-`conda deactivate`, `source deactivate`, *or* `deactivate` 
+When you are done, deactivate it using*
+`conda deactivate`, `source deactivate`, *or* `deactivate`
 *depending on your version*.
 
 In the project root directory, run the following to install the required packages.
